@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: vault-demo
+  cloud:
+    vault:
+      uri: http://localhost:8200
+      token: root
+      scheme: http
+      kv:
+        enabled: true
+        backend: secret
+        application-name: vault-demo
+  config:
+    import: vault://
+  datasource:
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  jpa:
+    hibernate:
+      ddl-auto: ${spring.jpa.hibernate.ddl-auto}
+    show-sql: ${spring.jpa.show-sql}

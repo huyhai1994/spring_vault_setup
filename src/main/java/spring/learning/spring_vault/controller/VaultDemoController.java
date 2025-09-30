@@ -7,14 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class VaultDemoController {
 
-    @Value("${db.username}")
-    private String dbUsername;
-
-    @Value("${db.password}")
+    @Value("${example.password}")
     private String dbPassword;
 
     @GetMapping("/secrets")
     public String getSecrets() {
-        return "DB Username: " + dbUsername + " | DB Password: " + dbPassword;
+        return "| DB Password: " + dbPassword;
     }
 }
