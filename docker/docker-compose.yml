@@ -34,9 +34,21 @@ services:
       retries: 5
     networks:
       - app_network
-
-volumes:
-  mysql_data:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql-server
+    user: root
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql/data
 
 networks:
   app_network:
+
+volumes:
+  mysql_data:
+  sql_data:
